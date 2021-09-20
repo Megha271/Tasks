@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case converter</title>
+    <style>
+        body{
+            width: 759px;
+            height: 200px;
+            text-align: center;
+            margin: 50px;
+            color: teal;
+            background-color: lightgoldenrodyellow;
+        }
+
+        .flex-container{
+            border: 3px solid;
+            text-align: center;
+            display: block;
+            height: 186px;
+            color: brown;
+            flex-direction: row;
+            font-family: 'Montserrat', sans-serif;
+            justify-content: space-around;
+            font-size: 1.1em;
+            width: 109%;
+        }
+        titles{
+            padding: 40px;
+        }
+        output{
+            flex-flow: wrap;
+        }
+        .button{
+            background: #faf7f5;
+            border:1px solid brown;
+            border-radius: 10px;
+            padding: 13px;
+            text-align: center;
+            margin: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="row fluid">
+    <h2 class="titles">Case Converter</h2>
+    <div class="flex-container">
+        <p id="demo">iAm mEgHa</p>
+        <p id="output"> </p>
+    </div>
+        <button class="button" onclick="uppercase()">Upper case</button>
+        <button class="button" onclick="lowercase()">Lower case</button>
+        <button class="button" onclick="sentenceCase()">Sentence case</button>
+        <button class="button" onclick="propercase()">Proper case</button>
+</div>
+</body>
+    <script>
+        function uppercase() {
+            let text = document.getElementById("demo").innerHTML;
+            document.getElementById("output").innerHTML = text.toUpperCase();
+        }
+
+        function lowercase() {
+            let text = document.getElementById("demo").innerHTML;
+            document.getElementById("output").innerHTML = text.toLowerCase();
+        }
+
+        function sentenceCase() {
+            let text = document.getElementById("demo").innerHTML;
+            document.getElementById("output").innerHTML = text.charAt(0).toUpperCase() + text.substring(1,).toLowerCase();
+        }
+
+        function propercase () {
+            let text = document.getElementById("demo").innerHTML;
+            let sentence = text.toLowerCase().split(" ");
+            for(let i=0;i<sentence.length; i++) {
+                sentence[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+            }
+               document.getElementById("output").innerHTML = sentence.join(" ");
+            return sentence;
+        }
+    </script>
+</html>
+
+
+
