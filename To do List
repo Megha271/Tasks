@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+</head>
+<style>
+    body{
+        margin-left: 30%;
+        margin-right: 30%;
+        background: beige;
+    }
+
+    #add-task-button{
+        margin: 5px;
+    }
+    #input-task{
+        width: 85%;
+        border: none;
+        border-bottom: 2px solid peachpuff;
+        background: inherit;
+    }
+    .delete-btn{
+        float: right;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    #task-list{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        border-radius: 10px;
+        background: #A7BFE8;
+    }
+    input[type=checkbox]:checked + span {
+        text-decoration: line-through;
+    }
+
+</style>
+<body>
+<header>
+    <h1>To-Do List</h1>
+</header>
+<input id="input-task">
+<button id="add-task-button"> ADD TASK </button>
+<ul id="task-list">
+    <li type="none">
+        <input type="checkbox" class="input">
+        <span class="task">update trello</span>
+        <button class="delete-btn"></button>
+    </li>
+    <li type="none">
+        <input type="checkbox" class="input">
+        <span class="task">email</span>
+        <button class="delete-btn"></button>
+    </li>
+    <li type="none">
+        <input type="checkbox" class="input">
+        <span class="task">meeting</span>
+        <button class="delete-btn"></button>
+    </li>
+</ul>
+<script>
+    let newTask = document.getElementById("add-task-button");
+    let newTaskText = document.getElementById("input-task");
+    let list = document.getElementById("task-list");
+
+    newTask.addEventListener("click", function () {
+        console.log("Yes");
+        let newInput = document.createElement("input");
+        newInput.type = "checkbox";
+        let newSpan = document.createElement("span");
+        newSpan.className = "task";
+        newSpan.textContent = newTaskText.value;
+
+        let newButton = document.createElement("button");
+        newButton.className = "delete-btn";
+
+        let newLi = document.createElement("li")
+        newLi.appendChild(newInput);
+        newLi.appendChild(newSpan);
+        newLi.appendChild(newButton);
+        list.appendChild(newLi);
+        addButtonListen();
+    });
+
+    function addButtonListen(){
+        let deleteBut = document.querySelectorAll(".delete-btn")
+        deleteBut.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                btn.parentElement.remove();
+            })
+        })
+    }
+
+</script>
+</body>
+</html>
